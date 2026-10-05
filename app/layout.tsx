@@ -1,19 +1,20 @@
-import type { Metadata } from 'next';
+'use client';
+import { useState } from 'react';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: 'Nexa Studio',
-  description: 'Premium digital products and lifestyle essentials.',
-};
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [lang, setLang] = useState('en');
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang={lang} dir={lang === 'ar' ? 'ar' : 'ltr'}>
+      <body>
+        <div style={{ padding: '10px', textAlign: 'center' }}>
+          <button onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}>
+            {lang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية'}
+          </button>
+        </div>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
