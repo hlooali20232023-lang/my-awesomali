@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [lang, setLang] = useState('en');
 
   return (
-    <html lang={lang} dir={lang === 'ar' ? 'ar' : 'ltr'}>
+    <html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <body>
         <div style={{ padding: '10px', textAlign: 'center' }}>
           <button onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}>
